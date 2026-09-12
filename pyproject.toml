@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dsutils"
+version = "0.1.0"
+description = "Personal data-science utilities not already covered by an existing maintained package"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "lcrmorin" }]
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.23",
+    "pandas>=1.5",
+    "matplotlib>=3.5",
+    "ipython>=7",
+]
+
+[project.optional-dependencies]
+xgboost-sql = ["xgboost>=1.6"]
+recipes = ["scikit-learn>=1.2", "feature-engine>=1.6", "category-encoders>=2.6"]
+test = [
+    "pytest>=7",
+    "duckdb>=0.9",
+    "xgboost>=1.6",
+    "statsmodels>=0.14",
+    "scikit-learn>=1.2",
+    "feature-engine>=1.6",
+    "category-encoders>=2.6",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
