@@ -18,12 +18,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-xgboost-sql = ["xgboost>=1.6"]
 recipes = ["scikit-learn>=1.2", "feature-engine>=1.6", "category-encoders>=2.6"]
 test = [
     "pytest>=7",
-    "duckdb>=0.9",
-    "xgboost>=1.6",
     "statsmodels>=0.14",
     "scikit-learn>=1.2",
     "feature-engine>=1.6",

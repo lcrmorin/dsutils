@@ -21,10 +21,6 @@ inline comments.
   for pairwise feature interactions (add/sub/mul/div) against one or more
   targets. Not covered by `sklearn.model_selection.permutation_test_score`
   (that's estimator-cv-bound, not a generic statistic).
-- `dsutils.xgboost_sql` - XGBoost-to-SQL export (dialect-aware CASE/IF trees,
-  float32-exact literal matching, categorical splits). Not covered by
-  `m2cgen` (no SQL target) or the narrow single-purpose SQL exporters on
-  PyPI.
 
 ## What's deliberately not here
 
@@ -45,7 +41,6 @@ pip install .
 Optional extras:
 
 ```
-pip install ".[xgboost-sql]"   # XGBoost -> SQL export
 pip install ".[recipes]"       # WOE encoding + correlation-cluster recipes
 pip install ".[test]"          # everything needed to run the test suite
 ```
