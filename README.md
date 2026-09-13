@@ -60,5 +60,4 @@ recipes/                reference pipelines built on existing packages (not inst
 annotated_originals/    original 17 scripts + verified findings as comments
 existing_package_mapping.md   the verification writeup
 tests/                  pytest suite
-issue_drafts/           upstream issues/PRs drafted from genuine gaps found here
 ```
