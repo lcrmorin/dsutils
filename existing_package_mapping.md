@@ -38,7 +38,7 @@ Checked via GitHub + PyPI release metadata (today is 2026-09-12).
 | `data_viz.py`, `term_structure_viz.py`, `data_viz_venn.py` | Direct `seaborn`/`matplotlib_venn` calls with your default kwargs | The libraries themselves | N/A | N/A | Drop — not utilities, just usage examples |
 | `percentogram_viz.py` | Equal-mass (quantile-width) histogram | None found | — | — | **Keep.** Now built into `dsutils.dataviz.percentogram` |
 | `probabilistic_sharpe.py` | Probabilistic Sharpe Ratio + min track record length | `jsharpe` — **new finding, reverses my earlier answer** | Small but actively maintained: 22 stars, 430+ commits, CI + dependency bot, released 2026-07-09 (~2 months ago) | N/A | Depend on it instead of keeping your own — see below |
-| `xgboost_to_sql.py` | XGBoost → SQL `CASE WHEN`, float32-correct thresholds, categorical + missing support | No good match — see below | — | — | **Keep, and you're actively hardening it** (see `TESTING_PLAN.md`) |
+| `xgboost_to_sql.py` | XGBoost → SQL `CASE WHEN`, float32-correct thresholds, categorical + missing support | No good match — see below | — | — | **Moved out** — now maintained as its own project, not part of this package |
 
 **Correction (verified by actually importing it):** `probatus` does **not** have PSI. I originally wrote it did, with a specific "corporate-backed, released 4 days ago" claim — that was wrong; I did not check hard enough the first time. `pip show probatus` gives version 3.1.5, and walking its actual submodules shows only `feature_elimination`, `interpret`, and `sample_similarity` — no `stat_tests`, no PSI, nothing distribution-comparison-related survives in the current release. `evidently` is the corrected recommendation for PSI (see Follow-up findings below for the numeric verification).
 
@@ -50,7 +50,7 @@ I previously said "keep this yourself, there's a real gap." I was wrong to stop 
 
 ## `xgboost_to_sql.py` — why "keep" holds up
 
-Closest prior art: [gbm2sql](https://github.com/crst/gbm2sql) (4 stars, 1 commit — a demo snapshot, not a maintained tool), [sqlgbm](https://github.com/mattismegevand/sqlgbm) (2 stars, README literally says "not ready for production use yet"), [xgb2sql](https://github.com/chengjunhou/xgb2sql) (R only). The general-purpose model-export tool [m2cgen](https://github.com/BayesWitnesses/m2cgen) has 3,000 stars but hasn't released since **April 2022** and doesn't target SQL as a language anyway. Nothing here is a real substitute — see `TESTING_PLAN.md` for what's now been hardened and verified on this file.
+Closest prior art: [gbm2sql](https://github.com/crst/gbm2sql) (4 stars, 1 commit — a demo snapshot, not a maintained tool), [sqlgbm](https://github.com/mattismegevand/sqlgbm) (2 stars, README literally says "not ready for production use yet"), [xgb2sql](https://github.com/chengjunhou/xgb2sql) (R only). The general-purpose model-export tool [m2cgen](https://github.com/BayesWitnesses/m2cgen) has 3,000 stars but hasn't released since **April 2022** and doesn't target SQL as a language anyway. Nothing here is a real substitute, but this module now lives in its own separately-maintained project rather than in dsutils.
 
 ## Why not just in pandas / scikit-learn / statsmodels?
 
